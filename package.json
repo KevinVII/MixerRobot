@@ -1,0 +1,23 @@
+{
+  "name": "mixerrobot",
+  "version": "1.0.0",
+  "description": "Chatbot for Mixer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinVII/MixerRobot.git"
+  },
+  "keywords": [
+    "Mixer",
+    "Chatbot"
+  ],
+  "author": "KevinVII",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinVII/MixerRobot/issues"
+  },
+  "homepage": "https://github.com/KevinVII/MixerRobot#readme"
+}
