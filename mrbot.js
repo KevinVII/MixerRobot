@@ -47,21 +47,20 @@ async function joinChat(userId, channelId) {
   return socket.auth(channelId, userId, joinInformation.authkey).then(() => socket);
 }
 
+
 // Get our Bot's User Information, Who are they?
 getUserInfo().then(async userInfo => {
-
   const socket = await joinChat(userInfo.id, dronesChannel);
+
+  function shoutSocials5min(){
+    socket.call('msg', ["Follow @DronesVII on Twitter, Instagram, and Youtube for more content"])
+  }
 
   socket.call('msg', [`Hello, friend.`]);
 
-  // Greet a joined user
-  // socket.on('UserJoin', data => {
-  //   socket.call('msg', [
-  //     `Hi ${data.username}!`,
-  //   ]);
-  // });
+  shoutSocials5min();
+  setInterval(shoutSocials5min, 5 * 60 * 1000);
 
-  // React to our !ping command
   // When there's a new chat message.
   socket.on('ChatMessage', async data => {
 
@@ -78,14 +77,22 @@ getUserInfo().then(async userInfo => {
       console.log(`${data.user_name} executed idme`);
     }
 
+    // cidme
     if (data.message.message[0].data.toLowerCase().startsWith('!cidme')) {
       var channelId = await client.request('GET', `channels/${data.user_name}?fields=id`);
       socket.call('whisper', [`${data.user_name}`, `Here's your Channel ID: ${channelId.body.id}`]);
       console.log(`${data.user_name} executed cidme`);
     }
 
+    // links
+    if (data.message.message[0].data.toLowerCase().startsWith('!links')) {
+      socket.call('msg', ["Links: twitter.com/DronesVII, youtube.com/DronesVII, Instagram.com/DronesVII"]);
+      console.log(`${data.user_name} executed links`);
+    }
+
+    // tag bot
     if (data.message.message[1]) {
-      if(data.message.message[1].username == "misterrobot"){
+      if (data.message.message[1].username == "misterrobot") {
         socket.call('msg', [`${data.user_name}, I'm a bot... stop tagging me!`]);
         console.log(`${data.user_name} tagged the bot...`);
       }
