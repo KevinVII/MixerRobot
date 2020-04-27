@@ -56,47 +56,51 @@ getUserInfo().then(async userInfo => {
     socket.call('msg', ["Follow @DronesVII on Twitter, Instagram, and Youtube for more content"])
   }
 
-  socket.call('msg', [`Hello, friend.`]);
+  socket.call('msg', [`Hello, friend. :rad-bot`]);
 
   shoutSocials5min();
   setInterval(shoutSocials5min, 5 * 60 * 1000);
 
   // When there's a new chat message.
   socket.on('ChatMessage', async data => {
+    var msg = data.message.message[0].data.toLowerCase();
+    var user = data.user_name;
 
     // hack
-    if (data.message.message[0].data.toLowerCase().startsWith('!hack')) {
-      socket.call('msg', [`@${data.user_name} Don't Delete Me. !leavehere or !delete.`]);
-      console.log(`${data.user_name} executed Hack`);
+    if (msg.startsWith('!hack')) {
+      socket.call('msg', [`@${user} Don't Delete Me.`]);
+      console.log(`${user} executed Hack`);
     }
 
     // idme
-    if (data.message.message[0].data.toLowerCase().startsWith('!idme')) {
+    if (msg.startsWith('!idme')) {
       // Respond with pong
-      socket.call('whisper', [`${data.user_name}`, `Here's your user ID: ${data.user_id}`]);
-      console.log(`${data.user_name} executed idme`);
+      socket.call('whisper', [`${user}`, `Here's your user ID: ${data.user_id}`]);
+      console.log(`${user} executed idme`);
     }
 
     // cidme
-    if (data.message.message[0].data.toLowerCase().startsWith('!cidme')) {
-      var channelId = await client.request('GET', `channels/${data.user_name}?fields=id`);
-      socket.call('whisper', [`${data.user_name}`, `Here's your Channel ID: ${channelId.body.id}`]);
-      console.log(`${data.user_name} executed cidme`);
+    if (msg.startsWith('!cidme')) {
+      var channelId = await client.request('GET', `channels/${user}?fields=id`);
+      socket.call('whisper', [`${user}`, `Here's your Channel ID: ${channelId.body.id}`]);
+      console.log(`${user} executed cidme`);
     }
 
     // links
-    if (data.message.message[0].data.toLowerCase().startsWith('!links')) {
+    if (msg.toLowerCase().startsWith('!links')) {
       socket.call('msg', ["Links: twitter.com/DronesVII, youtube.com/DronesVII, Instagram.com/DronesVII"]);
-      console.log(`${data.user_name} executed links`);
+      console.log(`${user} executed links`);
     }
 
     // tag bot
     if (data.message.message[1]) {
       if (data.message.message[1].username == "misterrobot") {
-        socket.call('msg', [`${data.user_name}, I'm a bot... stop tagging me!`]);
-        console.log(`${data.user_name} tagged the bot...`);
+        socket.call('msg', [`${user}, I'm a bot... stop tagging me!`]);
+        console.log(`${user} tagged the bot...`);
       }
     }
+
+
   });
 
   // Handle errors
