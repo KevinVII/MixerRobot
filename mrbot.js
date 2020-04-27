@@ -84,6 +84,18 @@ getUserInfo().then(async userInfo => {
       console.log(`${user} executed instagram`);
     }
 
+    // discord
+    if (msg.startsWith('!discord')){
+      socket.call('msg', [`@${user}, join us! discord.gg/qFqYsxC`]);
+      console.log(`{user} executed discord`);
+    }
+
+    // clip.rip
+    if (msg.startsWith('!cliprip') || msg.startsWith('!clipdownload') || msg.startsWith('!downloadclip')) {
+      socket.call('msg', [`@${user}, use Clip.rip to download Mixer Clips!`]);
+      console.log(`${user} executed Clip.rip`);
+    }
+
     // hack
     if (msg.startsWith('!hack')) {
       socket.call('msg', [`@${user} Don't Delete Me.`]);
@@ -105,7 +117,7 @@ getUserInfo().then(async userInfo => {
     }
 
     // links
-    if (msg.toLowerCase().startsWith('!links')) {
+    if (msg.startsWith('!links')) {
       socket.call('msg', ["Links: twitter.com/DronesVII, youtube.com/DronesVII, Instagram.com/DronesVII"]);
       console.log(`${user} executed links`);
     }
