@@ -66,6 +66,24 @@ getUserInfo().then(async userInfo => {
     var msg = data.message.message[0].data.toLowerCase();
     var user = data.user_name;
 
+    // Twitter
+    if (msg.startsWith('!twitter')) {
+      socket.call('msg', [`@${user} https://www.twitter.com/DronesVII`]);
+      console.log(`${user} executed twitter`);
+    }
+
+    // Youtube
+    if (msg.startsWith('!youtube')) {
+      socket.call('msg', [`@${user} https://www.youtube.com/DronesVII`]);
+      console.log(`${user} executed youtube`);
+    }
+
+    // Instagram
+    if (msg.startsWith('!insta') || msg.startsWith('!instagram') || msg.startsWith('!ig')) {
+      socket.call('msg', [`@${user} https://www.instagram.com/DronesVII`]);
+      console.log(`${user} executed instagram`);
+    }
+
     // hack
     if (msg.startsWith('!hack')) {
       socket.call('msg', [`@${user} Don't Delete Me.`]);
