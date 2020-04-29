@@ -1,4 +1,3 @@
-// Load in some dependencies
 const Mixer = require('@mixer/client-node');
 const config = require('config');
 const ws = require('ws');
