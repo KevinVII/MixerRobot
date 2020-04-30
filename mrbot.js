@@ -121,10 +121,16 @@ getUserInfo().then(async userInfo => {
       console.log(`${user} executed links`);
     }
 
+    // links
+    if (msg.startsWith('!friend')) {
+      socket.call('msg', ["I'm 'DronesVII' on most games and services. But ask to be sure. I will NEVER ask for your password/account/info. If you're not sure if it's me, check !links for official socials."]);
+      console.log(`${user} executed friend`);
+    }
+
     // sens
     if (msg.startsWith('!sens')) {
       socket.call('msg', ["Drones uses 800 dpi. 0.47 Sens on VALORANT 1.5 CSGO"]);
-      console.log(`${user} executed links`);
+      console.log(`${user} executed sens`);
     }
 
     // tag bot
