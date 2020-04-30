@@ -121,6 +121,12 @@ getUserInfo().then(async userInfo => {
       console.log(`${user} executed links`);
     }
 
+    // sens
+    if (msg.startsWith('!sens')) {
+      socket.call('msg', ["Drones uses 800 dpi. 0.47 Sens on VALORANT 1.5 CSGO"]);
+      console.log(`${user} executed links`);
+    }
+
     // tag bot
     if (data.message.message[1]) {
       if (data.message.message[1].username == "misterrobot") {
