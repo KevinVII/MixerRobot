@@ -133,6 +133,12 @@ getUserInfo().then(async userInfo => {
       console.log(`${user} executed sens`);
     }
 
+    // sens
+    if (msg.startsWith('!valorant')) {
+      socket.call('msg', ["My rank is Wood 1..."]);
+      console.log(`${user} executed sens`);
+    }
+
     // tag bot
     if (data.message.message[1]) {
       if (data.message.message[1].username == "misterrobot") {
