@@ -129,7 +129,7 @@ getUserInfo().then(async userInfo => {
 
     // sens
     if (msg.startsWith('!sens')) {
-      socket.call('msg', ["Drones uses 800 dpi. 0.47 Sens on VALORANT 1.5 CSGO"]);
+      socket.call('msg', ["800 dpi. 0.47 Sens on VALORANT 1.5 CSGO"]);
       console.log(`${user} executed sens`);
     }
 
