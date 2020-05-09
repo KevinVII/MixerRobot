@@ -133,9 +133,14 @@ getUserInfo().then(async userInfo => {
       console.log(`${user} executed sens`);
     }
 
-    // sens
+    // valorant
     if (msg.startsWith('!valorant')) {
       socket.call('msg', ["My rank is Wood 1..."]);
+      console.log(`${user} executed sens`);
+    }
+
+    if (msg.startsWith('!riot')) {
+      socket.call('msg', [`${user}, Drones#VII`]);
       console.log(`${user} executed sens`);
     }
 
