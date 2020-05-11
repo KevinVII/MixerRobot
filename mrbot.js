@@ -139,8 +139,15 @@ getUserInfo().then(async userInfo => {
       console.log(`${user} executed sens`);
     }
 
+    // riot
     if (msg.startsWith('!riot')) {
       socket.call('msg', [`${user}, Drones#VII`]);
+      console.log(`${user} executed sens`);
+    }
+
+    // twitch
+    if (msg.startsWith('!twitch')) {
+      socket.call('msg', [`Look everybody! ${user} doesn't know what website we're on!`]);
       console.log(`${user} executed sens`);
     }
 
